@@ -39,17 +39,17 @@ function Pagination({ data, setCurrentItems }) {
         marginPagesDisplayed={2}
         pageCount={pageCount}
         previousLabel='<'
-        pageClassName='flex items-center justify-center w-10 h-10 text-red-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-100'
+        pageClassName='flex items-center justify-center w-10 h-10 text-emerald-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-emerald-100'
         pageLinkClassName='page-link'
-        previousClassName='flex items-center justify-center w-10 h-10 text-red-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-100'
+        previousClassName='flex items-center justify-center w-10 h-10 text-emerald-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-emerald-100'
         previousLinkClassName='page-link'
-        nextClassName='flex items-center justify-center w-10 h-10 text-red-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-100'
+        nextClassName='flex items-center justify-center w-10 h-10 text-emerald-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-emerald-100'
         nextLinkClassName='page-link'
         breakLabel='...'
-        breakClassName='flex items-center justify-center w-10 h-10 text-red-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-red-100'
+        breakClassName='flex items-center justify-center w-10 h-10 text-emerald-500 transition-colors duration-150 rounded-full focus:shadow-outline hover:bg-emerald-100'
         breakLinkClassName='page-link'
         containerClassName='inline-flex space-x-2'
-        activeClassName='w-10 h-10 !text-white transition-colors duration-150 bg-red-500 rounded-full focus:shadow-outline hover:bg-red-500'
+        activeClassName='w-10 h-10 !text-white transition-colors duration-150 bg-emerald-500 rounded-full focus:shadow-outline hover:bg-emerald-500'
         renderOnZeroPageCount={null}
       />
 

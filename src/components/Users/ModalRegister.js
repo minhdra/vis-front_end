@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { modalUserValidator } from '../../utils/validation';
-import AlertAuth from '../Alerts/AlertAuth';
+import AlertAuth from '../Shared/Alerts/AlertAuth';
 
 export default function ModalRegister({
   titleModal,

@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import NotificationDropdown from '../Dropdowns/NotificationDropdown.js';
-import UserDropdown from '../Dropdowns/UserDropdown.js';
+import NotificationDropdown from '../../Dropdowns/NotificationDropdown.js';
+import UserDropdown from '../../Dropdowns/UserDropdown';
 
 const listSidebar = {
   manager: [
@@ -13,9 +13,14 @@ const listSidebar = {
       icon: 'fa-regular fa-gauge',
     },
     {
-      title: 'Tables',
-      link: '/admin/tables',
-      icon: 'fa-regular fa-bars',
+      title: 'Products',
+      link: '/admin/products',
+      icon: 'fa-brands fa-product-hunt',
+    },
+    {
+      title: 'Services',
+      link: '/admin/services',
+      icon: 'fa-regular fa-box',
     },
     {
       title: 'Users',
@@ -28,6 +33,13 @@ const listSidebar = {
       title: 'Settings',
       link: '/admin/settings',
       icon: 'fa-regular fa-gear',
+    },
+  ],
+  website: [
+    {
+      title: 'Slides',
+      link: '/admin/slides',
+      icon: 'fa-regular fa-images',
     },
   ],
 };
@@ -126,7 +138,7 @@ export default function Sidebar() {
                     className={
                       'text-xs uppercase py-3 font-bold flex items-center gap-4 ' +
                       (url === item.link
-                        ? 'text-red-500 hover:text-red-600'
+                        ? 'text-emerald-500 hover:text-emerald-600'
                         : 'text-slate-500 hover:text-slate-400')
                     }
                     to={item.link}
@@ -158,7 +170,40 @@ export default function Sidebar() {
                     className={
                       'text-xs uppercase py-3 font-bold flex items-center gap-4 ' +
                       (url === item.link
-                        ? 'text-red-500 hover:text-red-600'
+                        ? 'text-emerald-500 hover:text-emerald-600'
+                        : 'text-slate-500 hover:text-slate-400')
+                    }
+                    to={item.link}
+                  >
+                    <i
+                      className={
+                        `${item.icon} text-lg block ` +
+                        (url === item.link ? 'opacity-75' : 'text-slate-400')
+                      }
+                    ></i>
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Divider */}
+            <hr className='my-4 md:min-w-full' />
+
+            {/* Heading */}
+            <h6 className='md:min-w-full text-slate-400 text-xs uppercase font-bold block pt-1 pb-4 no-underline'>
+              Auth
+            </h6>
+            {/* Navigation */}
+
+            <ul className='md:flex-col md:min-w-full flex flex-col list-none md:mb-4'>
+              {listSidebar.website.map((item, index) => (
+                <li key={index} className='items-center'>
+                  <Link
+                    className={
+                      'text-xs uppercase py-3 font-bold flex items-center gap-4 ' +
+                      (url === item.link
+                        ? 'text-emerald-500 hover:text-emerald-600'
                         : 'text-slate-500 hover:text-slate-400')
                     }
                     to={item.link}

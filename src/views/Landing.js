@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 // components
 
-import Navbar from "../components/Navbars/AuthNavbar.js";
-import Footer from "../components/Footers/Footer.js";
+import Navbar from "../components/Shared/Navbars/AuthNavbar.js";
+import Footer from "../components/Shared/Footers/Footer.js";
 
 export default function Landing({ setTitle }) {
   useEffect(() => { setTitle('VIS - Landing Pages'); }, [setTitle]);

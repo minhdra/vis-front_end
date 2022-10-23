@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 
 // components
 
-import Navbar from "../components/Navbars/AuthNavbar.js";
-import FooterSmall from "../components/Footers/FooterSmall.js";
+import Navbar from "../components/Shared/Navbars/AuthNavbar.js";
+import FooterSmall from "../components/Shared/Footers/FooterSmall.js";
 
 export default function Auth() {
   return (

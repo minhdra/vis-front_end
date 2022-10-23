@@ -3,9 +3,9 @@ import { Outlet } from "react-router-dom";
 
 // components
 
-import AdminNavbar from "../components/Navbars/AdminNavbar";
-import Sidebar from "../components/Sidebar/Sidebar";
-import FooterAdmin from "../components/Footers/FooterAdmin";
+import AdminNavbar from "../components/Shared/Navbars/AdminNavbar";
+import Sidebar from "../components/Shared/Sidebar/Sidebar";
+import FooterAdmin from "../components/Shared/Footers/FooterAdmin";
 
 export default function Admin() {
   return (

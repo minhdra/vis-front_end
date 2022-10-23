@@ -2,10 +2,11 @@ import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Confirm from '../Shared/ConfirmDialog/Confirm';
 import Pagination from '../Shared/Pagination/Pagination';
+import { formatDateTime } from '../../utils/formatDate';
 
 // components
 
-export default function UserCardTable({
+export default function CardTable({
   color,
   titleTable,
   data,
@@ -15,25 +16,18 @@ export default function UserCardTable({
   setItemSelected,
   setShowModal,
   setTitleModal,
-  setShowModalRegister,
   toggleToast,
   handlePost,
 }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [currentItems, setCurrentItems] = useState();
 
-  const usernameRef = useRef();
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
-  const emailRef = useRef();
+  const titleRef = useRef();
 
   const handleSearch = (event) => {
     searchData({
       ...optionSearch,
-      username: usernameRef.current.value,
-      firstName: firstNameRef.current.value,
-      lastName: lastNameRef.current.value,
-      email: emailRef.current.value,
+      title: titleRef.current.value,
     });
   };
 
@@ -78,9 +72,9 @@ export default function UserCardTable({
               className='bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
               type='button'
               onClick={() => {
-                setTitleModal('Register');
+                setTitleModal('Creating');
                 setItemSelected();
-                setShowModalRegister(true);
+                setShowModal(true);
               }}
             >
               <i className='fas fa-plus'></i> Add new
@@ -109,42 +103,10 @@ export default function UserCardTable({
                   }
                 >
                   <input
-                    ref={usernameRef}
+                    ref={titleRef}
                     type='text'
                     className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                    placeholder='Username'
-                    onChange={handleSearch}
-                  />
-                </th>
-                <th
-                  className={
-                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-400 border-slate-100'
-                      : 'bg-sky-800 text-sky-300 border-sky-700')
-                  }
-                >
-                  <input
-                    ref={firstNameRef}
-                    type='text'
-                    className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                    placeholder='First name'
-                    onChange={handleSearch}
-                  />
-                </th>
-                <th
-                  className={
-                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
-                    (color === 'light'
-                      ? 'bg-slate-50 text-slate-400 border-slate-100'
-                      : 'bg-sky-800 text-sky-300 border-sky-700')
-                  }
-                >
-                  <input
-                    ref={lastNameRef}
-                    type='text'
-                    className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                    placeholder='Last name'
+                    placeholder='Title'
                     onChange={handleSearch}
                   />
                 </th>
@@ -158,20 +120,36 @@ export default function UserCardTable({
                 ></th>
                 <th
                   className={
-                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center ' +
                     (color === 'light'
                       ? 'bg-slate-50 text-slate-400 border-slate-100'
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
-                >
-                  <input
-                    ref={emailRef}
-                    type='text'
-                    className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                    placeholder='Email'
-                    onChange={handleSearch}
-                  />
-                </th>
+                ></th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                ></th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                ></th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                ></th>
                 <th
                   className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center ' +
@@ -200,7 +178,7 @@ export default function UserCardTable({
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
                 >
-                  Username
+                  Title
                 </th>
                 <th
                   className={
@@ -210,7 +188,7 @@ export default function UserCardTable({
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
                 >
-                  First name
+                  Thumbnail
                 </th>
                 <th
                   className={
@@ -220,7 +198,7 @@ export default function UserCardTable({
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
                 >
-                  Last name
+                  User created
                 </th>
                 <th
                   className={
@@ -230,7 +208,7 @@ export default function UserCardTable({
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
                 >
-                  Avatar
+                  Date created
                 </th>
                 <th
                   className={
@@ -240,7 +218,17 @@ export default function UserCardTable({
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
                 >
-                  Email
+                  User updated
+                </th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                >
+                  Date updated
                 </th>
                 <th
                   className={
@@ -269,19 +257,13 @@ export default function UserCardTable({
                       </span>
                     </th>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4 font-medium'>
-                      {item.username}
+                      {item.title}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
-                      {item.firstName}
-                    </td>
-                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
-                      {item.lastName}
-                    </td>
-                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4'>
                       <div className='flex'>
                         <img
                           src={
-                            item.avatar ??
+                            item.thumbnail ??
                             require('../../assets/img/team-1-800x800.jpg')
                           }
                           alt='...'
@@ -290,12 +272,16 @@ export default function UserCardTable({
                       </div>
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
-                      <a
-                        className='hover:text-red-600 hover:underline'
-                        href={'mailto:' + item.email}
-                      >
-                        {item.email}
-                      </a>
+                      {item.createdId[0]?.username}
+                    </td>
+                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4'>
+                      {formatDateTime(item.createdAt)}
+                    </td>
+                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
+                      {item.updatedId[0]?.username}
+                    </td>
+                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4'>
+                      {formatDateTime(item.updatedAt)}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right'>
                       <div className='flex items-center justify-center gap-1'>
@@ -335,10 +321,10 @@ export default function UserCardTable({
   );
 }
 
-UserCardTable.defaultProps = {
+CardTable.defaultProps = {
   color: 'light',
 };
 
-UserCardTable.propTypes = {
+CardTable.propTypes = {
   color: PropTypes.oneOf(['light', 'dark']),
 };

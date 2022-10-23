@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-import Navbar from "../components/Navbars/AuthNavbar.js";
-import Footer from "../components/Footers/Footer.js";
+import Navbar from "../components/Shared/Navbars/AuthNavbar.js";
+import Footer from "../components/Shared/Footers/Footer.js";
 
 export default function Profile({ setTitle }) {
   useEffect(() => { setTitle('VIS - Auth'); }, [setTitle]);

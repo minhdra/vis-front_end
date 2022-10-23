@@ -2,13 +2,13 @@ import React from "react";
 
 // components
 
-import CardStats from "../Cards/CardStats.js";
+import CardStats from "../../Cards/CardStats.js";
 
 export default function HeaderStats() {
   return (
     <>
       {/* Header */}
-      <div className="relative bg-red-500 py-4 mb-4">
+      <div className="relative bg-emerald-500 py-4 mb-4">
         <div className="px-4 md:px-10 mx-auto w-full">
           <div>
             {/* Card stats */}
@@ -19,7 +19,7 @@ export default function HeaderStats() {
                   statTitle="350,897"
                   statArrow="up"
                   statPercent="3.48"
-                  statPercentColor="text-emerald-500"
+                  statPercentColor="text-red-500"
                   statDescripiron="Since last month"
                   statIconName="far fa-chart-bar"
                   statIconColor="bg-red-500"
@@ -55,7 +55,7 @@ export default function HeaderStats() {
                   statTitle="49,65%"
                   statArrow="up"
                   statPercent="12"
-                  statPercentColor="text-emerald-500"
+                  statPercentColor="text-red-500"
                   statDescripiron="Since last month"
                   statIconName="fas fa-percent"
                   statIconColor="bg-sky-500"

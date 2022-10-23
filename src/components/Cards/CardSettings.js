@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { capitalize } from '../../utils/formatString';
 import { modalUserValidator } from '../../utils/validation';
-import Toasts from '../Toasts/Toasts';
+import Toasts from '../Shared/Toasts/Toasts';
 
 // components
 

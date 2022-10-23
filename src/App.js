@@ -17,9 +17,13 @@ import Maps from './views/admin/Maps';
 import Settings from './views/admin/Settings';
 import Tables from './views/admin/Tables';
 import Users from './views/admin/Users';
+import Products from './views/admin/Products.js';
 
+// Landing pages
 import Login from './views/auth/Login';
 import Register from './views/auth/Register';
+import Slides from './views/admin/Slides.js';
+import Services from './views/admin/Service.js';
 
 export default function App() {
   const [title, setTitle] = useState();
@@ -38,7 +42,10 @@ export default function App() {
             <Route path='/admin/maps' element={<Maps setTitle={setTitle} />} />
             <Route path='/admin/settings' element={<Settings setTitle={setTitle} />} />
             <Route path='/admin/tables' element={<Tables setTitle={setTitle} />} />
+            <Route path='/admin/products' element={<Products setTitle={setTitle} />} />
             <Route path='/admin/users' element={<Users setTitle={setTitle} />} />
+            <Route path='/admin/slides' element={<Slides setTitle={setTitle} />} />
+            <Route path='/admin/services' element={<Services setTitle={setTitle} />} />
           </Route>
           <Route element={<Auth />}>
             <Route index path='/auth/login' element={<Login setTitle={setTitle} />} />

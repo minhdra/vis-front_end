@@ -31,8 +31,50 @@ export function modalUserValidator(data) {
     email: joi.string().email({ tlds: { allow: false } }),
     firstName: joi.string().max(24),
     lastName: joi.string().max(24),
+  }).messages({
+    'string.empty': `Your {#label} is required`,
   });
 
   return rule.validate(data, { abortEarly: false });
 }
 
+export function modalProductValidator(data) {
+  const rule = joi.object({
+    ...data,
+    thumbnail: joi.string().required(),
+    content: joi.string().required(),
+    name: joi.string().max(100).required(),
+    listNameImages: joi.array().min(0),
+  }).messages({
+    'string.empty': `Your {#label} is required`,
+  });
+
+  return rule.validate(data, { abortEarly: false });
+}
+
+export function modalServiceValidator(data) {
+  const rule = joi.object({
+    ...data,
+    thumbnail: joi.string().required(),
+    content: joi.string().required(),
+    title: joi.string().max(100).required(),
+    listNameImages: joi.array().min(0),
+  }).messages({
+    'string.empty': `Your {#label} is required`,
+  });
+
+  return rule.validate(data, { abortEarly: false });
+}
+
+export function modalSlideValidator(data) {
+  const rule = joi.object({
+    ...data,
+    title: joi.string().required(),
+    backgroundImage: joi.string().required(),
+    redirectTo: joi.string().max(100).required(),
+  }).messages({
+    'string.empty': `Your {#label} is required`,
+  });
+
+  return rule.validate(data, { abortEarly: false });
+}

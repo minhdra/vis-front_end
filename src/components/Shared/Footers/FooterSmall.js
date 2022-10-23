@@ -17,10 +17,10 @@ export default function FooterSmall(props) {
               <div className="text-sm text-slate-400 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=nr-footer-small"
+                  href="https://github.com/minhdra"
                   className="text-white hover:text-slate-200 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                  Le Minh
                 </a>
               </div>
             </div>
@@ -31,31 +31,6 @@ export default function FooterSmall(props) {
                     href="https://www.creative-tim.com?ref=nr-footer-small"
                     className="text-white hover:text-slate-200 text-sm font-semibold block py-1 px-3"
                   >
-                    Creative Tim
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.creative-tim.com/presentation?ref=nr-footer-small"
-                    className="text-white hover:text-slate-200 text-sm font-semibold block py-1 px-3"
-                  >
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="http://blog.creative-tim.com?ref=nr-footer-small"
-                    className="text-white hover:text-slate-200 text-sm font-semibold block py-1 px-3"
-                  >
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/creativetimofficial/notus-react/blob/main/LICENSE.md?ref=nr-footer-small"
-                    className="text-white hover:text-slate-200 text-sm font-semibold block py-1 px-3"
-                  >
-                    MIT License
                   </a>
                 </li>
               </ul>
