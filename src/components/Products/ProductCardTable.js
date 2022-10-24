@@ -297,7 +297,7 @@ export default function CardTable({
                           <i className='fa-regular fa-pencil'></i>
                         </button>
                         <button
-                          className='bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs py-2 px-3 rounded shadow hover:shadow-md outline-none focus:outline-none mb-1 ease-linear transition-all duration-150'
+                          className='bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs py-2 px-3 rounded shadow hover:shadow-md outline-none focus:outline-none mb-1 ease-linear transition-all duration-150'
                           type='button'
                           onClick={() => handleShowConfirm(item)}
                         >

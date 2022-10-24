@@ -31,6 +31,7 @@ export function modalUserValidator(data) {
     email: joi.string().email({ tlds: { allow: false } }),
     firstName: joi.string().max(24),
     lastName: joi.string().max(24),
+    avatar: joi.string(),
   }).messages({
     'string.empty': `Your {#label} is required`,
   });
@@ -72,6 +73,7 @@ export function modalSlideValidator(data) {
     title: joi.string().required(),
     backgroundImage: joi.string().required(),
     redirectTo: joi.string().max(100).required(),
+    contentLink: joi.string().max(100).required(),
   }).messages({
     'string.empty': `Your {#label} is required`,
   });

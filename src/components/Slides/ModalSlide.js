@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { capitalize } from '../../utils/formatString';
 import { modalSlideValidator } from '../../utils/validation';
-import SunEditor from 'suneditor-react';
-import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 import { uploadSingle } from '../../services/file';
 
 let selectedFileThumbnail;
@@ -16,16 +14,16 @@ export default function Modal({
 }) {
   const titleRef = useRef();
   const redirectToRef = useRef();
+  const contentLinkRef = useRef();
 
   const [backgroundImage, setBackgroundImage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [caption, setCaption] = useState();
 
   useEffect(() => {
     if (itemSelected && titleRef) {
       titleRef.current.value = itemSelected.title;
       redirectToRef.current.value = itemSelected.redirectTo;
-      setCaption(itemSelected.caption);
+      contentLinkRef.current.value = itemSelected.contentLink;
       setBackgroundImage(itemSelected.backgroundImage);
     } else emptyValues();
   }, [itemSelected]);
@@ -34,7 +32,7 @@ export default function Modal({
     if (titleRef) {
       titleRef.current.value = '';
       redirectToRef.current.value = '';
-      setCaption('');
+      contentLinkRef.current.value = '';
     }
   };
 
@@ -63,14 +61,14 @@ export default function Modal({
       ...itemSelected,
       title: capitalize(titleRef.current.value),
       redirectTo: redirectToRef.current.value.trim().toLowerCase(),
-      caption: caption,
+      contentLink: contentLinkRef.current.value.trim(),
       backgroundImage: backgroundImage.trim(),
     };
 
     if (selectedFileThumbnail) await handleUploadImage(selectedFileThumbnail).then(res => data.backgroundImage = res);
-
+    
     const validator = modalSlideValidator(data);
-
+    
     const arr = [];
     setMessages(arr);
     if (validator.error) {
@@ -182,36 +180,18 @@ export default function Modal({
                         className='block uppercase text-slate-500 text-xs font-bold mb-2'
                         htmlFor='grid-password'
                       >
-                        caption
+                        Content of the link
                       </label>
-                      {(caption!==undefined || caption) && (
-                        <SunEditor
-                          autoFocus={false}
-                          onChange={(content) => setCaption(content)}
-                          defaultValue={caption}
-                          setDefaultStyle={'height: 150px; font-size: 16px'}
-                          setOptions={{
-                            buttonList: [
-                              [
-                                'bold',
-                                'underline',
-                                'italic',
-                                'strike',
-                                'list',
-                                'align',
-                                'fontSize',
-                                'formatBlock',
-                                'link',
-                                'fullScreen',
-                                'codeView',
-                              ],
-                            ],
-                          }}
-                        />
-                      )}
+                      <input
+                        ref={contentLinkRef}
+                        type='text'
+                        placeholder='Content of the link'
+                        className='border-0 px-3 py-3 placeholder-slate-400 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                        defaultValue={itemSelected?.contentLink}
+                      />
                       <small className='text-red-500 font-medium'>
                         {messages.map((message) =>
-                          message.key === 'caption' ? message.message : null
+                          message.key === 'contentLink' ? message.message : null
                         )}
                       </small>
                     </div>

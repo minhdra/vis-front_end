@@ -187,6 +187,11 @@ export default function Modal({
                         onChange={handleChangeAvatarURL}
                         value={avatarURL}
                       />
+                      <small className='text-red-500 font-medium'>
+                        {messages.map((message) =>
+                          message.key === 'avatar' ? message.message : null
+                        )}
+                      </small>
                     </div>
                   </div>
                   <div className='w-full lg:w-6/12 px-4'>

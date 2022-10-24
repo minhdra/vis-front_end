@@ -8,6 +8,7 @@ export default function Slides({ setTitle }) {
   const [optionSearch, setOptionSearch] = useState({
     title: '',
     redirectTo: '',
+    contentLink: '',
   });
   const [data, setData] = useState();
   const [error, setError] = useState();

@@ -274,7 +274,6 @@ export default function Modal({
                                 'fontSize',
                                 'formatBlock',
                                 'table',
-                                'image',
                                 'link',
                                 'fullScreen',
                                 'codeView',

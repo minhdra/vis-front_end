@@ -66,12 +66,16 @@ export default function CardSettings({ user, updateUser }) {
   const toggleToast = (status = false) => {
     setToastStatus(status);
     setShowToasts(!showToasts);
-    setTimeout(() => { setShowToasts(false) }, 2500);
-  }
+    setTimeout(() => {
+      setShowToasts(false);
+    }, 2500);
+  };
 
   return (
     <>
-      {showToasts && <Toasts showToasts={showToasts} toastStatus={toastStatus} />}
+      {showToasts && (
+        <Toasts showToasts={showToasts} toastStatus={toastStatus} />
+      )}
       <div className='w-full lg:w-8/12 px-4'>
         <div className='relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-slate-50 border-0'>
           <div className='rounded-t bg-white mb-0 px-6 py-6'>
@@ -122,6 +126,11 @@ export default function CardSettings({ user, updateUser }) {
                       className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                       defaultValue='jesse@example.com'
                     />
+                    <small className='text-red-500 font-medium'>
+                      {messages.map((message) =>
+                        message.key === 'email' ? message.message : null
+                      )}
+                    </small>
                   </div>
                 </div>
                 <div className='w-full lg:w-6/12 px-4'>
@@ -138,6 +147,11 @@ export default function CardSettings({ user, updateUser }) {
                       className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                       defaultValue='Lucky'
                     />
+                    <small className='text-red-500 font-medium'>
+                      {messages.map((message) =>
+                        message.key === 'firstName' ? message.message : null
+                      )}
+                    </small>
                   </div>
                 </div>
                 <div className='w-full lg:w-6/12 px-4'>
@@ -154,6 +168,11 @@ export default function CardSettings({ user, updateUser }) {
                       className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                       defaultValue='Jesse'
                     />
+                    <small className='text-red-500 font-medium'>
+                      {messages.map((message) =>
+                        message.key === 'lastName' ? message.message : null
+                      )}
+                    </small>
                   </div>
                 </div>
                 <div className='w-full lg:w-12/12 px-4'>
@@ -170,6 +189,11 @@ export default function CardSettings({ user, updateUser }) {
                       onChange={handleChangeAvatarURL}
                       value={avatarURL}
                     />
+                    <small className='text-red-500 font-medium'>
+                      {messages.map((message) =>
+                        message.key === 'avatar' ? message.message : null
+                      )}
+                    </small>
                   </div>
                 </div>
               </div>

@@ -23,12 +23,14 @@ export default function CardTable({
 
   const titleRef = useRef();
   const redirectRef = useRef();
+  const contentLinkRef = useRef();
 
   const handleSearch = (event) => {
     searchData({
       ...optionSearch,
       title: titleRef.current.value,
       redirectTo: redirectRef.current.value,
+      contentLink: contentLinkRef.current.value,
     });
   };
 
@@ -120,6 +122,22 @@ export default function CardTable({
                   }
                 >
                   <input
+                    ref={contentLinkRef}
+                    type='text'
+                    className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                    placeholder='Content of the link'
+                    onChange={handleSearch}
+                  />
+                </th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                >
+                  <input
                     ref={redirectRef}
                     type='text'
                     className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
@@ -173,6 +191,16 @@ export default function CardTable({
                       : 'bg-sky-800 text-sky-300 border-sky-700')
                   }
                 >
+                  Content of the link
+                </th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                >
                   Redirect to
                 </th>
                 <th
@@ -215,6 +243,9 @@ export default function CardTable({
                       {item.title}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
+                      {item.contentLink}
+                    </td>
+                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
                       {item.redirectTo}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
@@ -242,7 +273,7 @@ export default function CardTable({
                           <i className='fa-regular fa-pencil'></i>
                         </button>
                         <button
-                          className='bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs py-2 px-3 rounded shadow hover:shadow-md outline-none focus:outline-none mb-1 ease-linear transition-all duration-150'
+                          className='bg-red-500 text-white active:bg-red-600 font-bold uppercase text-xs py-2 px-3 rounded shadow hover:shadow-md outline-none focus:outline-none mb-1 ease-linear transition-all duration-150'
                           type='button'
                           onClick={() => handleShowConfirm(item)}
                         >
