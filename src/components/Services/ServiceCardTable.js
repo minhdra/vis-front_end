@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Confirm from '../Shared/ConfirmDialog/Confirm';
 import Pagination from '../Shared/Pagination/Pagination';
-import { formatDateTime } from '../../utils/formatDate';
+import { formatDate } from '../../utils/formatDate';
 
 // components
 
@@ -120,6 +120,14 @@ export default function CardTable({
                 ></th>
                 <th
                   className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                ></th>
+                <th
+                  className={
                     'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center ' +
                     (color === 'light'
                       ? 'bg-slate-50 text-slate-400 border-slate-100'
@@ -179,6 +187,16 @@ export default function CardTable({
                   }
                 >
                   Title
+                </th>
+                <th
+                  className={
+                    'px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ' +
+                    (color === 'light'
+                      ? 'bg-slate-50 text-slate-400 border-slate-100'
+                      : 'bg-sky-800 text-sky-300 border-sky-700')
+                  }
+                >
+                  Path
                 </th>
                 <th
                   className={
@@ -260,6 +278,9 @@ export default function CardTable({
                       {item.title}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
+                      {item.path}
+                    </td>
+                    <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
                       <div className='flex'>
                         <img
                           src={
@@ -275,13 +296,13 @@ export default function CardTable({
                       {item.createdId[0]?.username}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4'>
-                      {formatDateTime(item.createdAt)}
+                      {formatDate(item.createdAt)}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm whitespace-nowrap p-4'>
                       {item.updatedId[0]?.username}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4'>
-                      {formatDateTime(item.updatedAt)}
+                      {formatDate(item.updatedAt)}
                     </td>
                     <td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right'>
                       <div className='flex items-center justify-center gap-1'>

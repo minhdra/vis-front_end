@@ -9,4 +9,12 @@ export const capitalize = (text) => {
     }, []).join(' ');
   }
   else return '';
-}
+};
+
+export const convertToPath = (text) => {
+  const regex = /&|,| |\//g;
+  if (text)
+    return text.trim().toLowerCase().replace(regex, '-').replace(/--/g, '-');
+    
+  return '';
+};

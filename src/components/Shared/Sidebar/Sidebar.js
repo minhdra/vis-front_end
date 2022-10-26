@@ -7,11 +7,11 @@ import UserDropdown from '../../Dropdowns/UserDropdown';
 
 const listSidebar = {
   manager: [
-    {
-      title: 'Dashboard',
-      link: '/admin/dashboard',
-      icon: 'fa-regular fa-gauge',
-    },
+    // {
+    //   title: 'Dashboard',
+    //   link: '/admin/dashboard',
+    //   icon: 'fa-regular fa-gauge',
+    // },
     {
       title: 'Products',
       link: '/admin/products',
@@ -72,7 +72,7 @@ export default function Sidebar() {
             className='md:block text-left md:pb-2 text-slate-500 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0'
             to='/'
           >
-            Notus React
+            <img className='w-[150px]' src={require('../../../assets/img/logo/vninspection-high-resolution-logo-color-on-transparent-background.png')} alt='' />
           </Link>
           {/* User */}
           <ul className='md:hidden items-center flex flex-wrap list-none'>

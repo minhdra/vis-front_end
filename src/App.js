@@ -26,7 +26,7 @@ import Slides from './views/admin/Slides.js';
 import Services from './views/admin/Service.js';
 
 export default function App() {
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState('VN-Inspection - Admin');
 
   useEffect(() => {
     window.document.title = title;
@@ -38,11 +38,11 @@ export default function App() {
         <Routes>
           {/* add routes with layouts */}
           <Route element={<Admin />}>
-            <Route index path='/admin/dashboard' element={<Dashboard setTitle={setTitle} />} />
+            {/* <Route index path='/admin/dashboard' element={<Dashboard setTitle={setTitle} />} /> */}
             <Route path='/admin/maps' element={<Maps setTitle={setTitle} />} />
             <Route path='/admin/settings' element={<Settings setTitle={setTitle} />} />
             <Route path='/admin/tables' element={<Tables setTitle={setTitle} />} />
-            <Route path='/admin/products' element={<Products setTitle={setTitle} />} />
+            <Route index path='/admin/products' element={<Products setTitle={setTitle} />} />
             <Route path='/admin/users' element={<Users setTitle={setTitle} />} />
             <Route path='/admin/slides' element={<Slides setTitle={setTitle} />} />
             <Route path='/admin/services' element={<Services setTitle={setTitle} />} />
@@ -58,7 +58,7 @@ export default function App() {
           {/* <Route path="*" element={<Navigate to="/admin"/>}/> */}
           <Route
             path='*'
-            element={<Navigate to='/admin/dashboard' replace />}
+            element={<Navigate to='/admin/products' replace />}
           />
         </Routes>
       </BrowserRouter>

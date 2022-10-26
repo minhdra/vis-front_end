@@ -45,7 +45,7 @@ export function modalProductValidator(data) {
     thumbnail: joi.string().required(),
     content: joi.string().required(),
     name: joi.string().max(100).required(),
-    listNameImages: joi.array().min(0),
+    path: joi.string().max(100).required(),
   }).messages({
     'string.empty': `Your {#label} is required`,
   });
@@ -59,7 +59,8 @@ export function modalServiceValidator(data) {
     thumbnail: joi.string().required(),
     content: joi.string().required(),
     title: joi.string().max(100).required(),
-    listNameImages: joi.array().min(0),
+    path: joi.string().max(100).required(),
+    summary: joi.string().required(),
   }).messages({
     'string.empty': `Your {#label} is required`,
   });

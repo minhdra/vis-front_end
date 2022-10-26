@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { capitalize } from '../../utils/formatString';
+import { capitalize, convertToPath } from '../../utils/formatString';
 import { modalServiceValidator } from '../../utils/validation';
 import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
@@ -15,6 +15,8 @@ export default function Modal({
   toggleToast,
 }) {
   const titleRef = useRef();
+  const pathRef = useRef();
+  const summaryRef = useRef();
 
   const [thumbnailURL, setThumbnailURL] = useState('');
   const [messages, setMessages] = useState([]);
@@ -22,10 +24,14 @@ export default function Modal({
   const [indexImage, setIndexImage] = useState();
   const [isDeleteImage, setIsDeleteImage] = useState(false);
   const [content, setContent] = useState();
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
     if (itemSelected && titleRef) {
-      titleRef.current.value = itemSelected.title;
+      // titleRef.current.value = itemSelected.title;
+      setTitle(itemSelected.title);
+      pathRef.current.value = itemSelected.path ?? '';
+      summaryRef.current.value = itemSelected.summary ?? '';
       setContent(itemSelected.content);
       setThumbnailURL(itemSelected.thumbnail);
       setListImages(itemSelected.listNameImages);
@@ -34,7 +40,10 @@ export default function Modal({
 
   const emptyValues = () => {
     if (titleRef) {
-      titleRef.current.value = '';
+      // titleRef.current.value = '';
+      setTitle('');
+      pathRef.current.value = '';
+      summaryRef.current.value = '';
       setContent('');
       // contentRef.current.value = '';
     }
@@ -64,11 +73,12 @@ export default function Modal({
     const uuid = window.sessionStorage.getItem('uuid');
     const data = {
       ...itemSelected,
-      title: capitalize(titleRef.current.value),
+      title: capitalize(title),
+      path: pathRef.current.value.trim(),
+      summary: summaryRef.current.value.trim(),
       content: content,
       thumbnail: thumbnailURL.trim(),
       updatedId: uuid,
-      listNameImages: listImages,
     };
 
     if (!itemSelected) data.createId = uuid;
@@ -90,6 +100,7 @@ export default function Modal({
       setShowModal(false);
       handlePost(data, itemSelected ? 1 : 0);
       toggleToast(true);
+      selectedFileThumbnail=null;
     }
   };
 
@@ -165,7 +176,7 @@ export default function Modal({
                 </div>
                 {/*body*/}
                 <div className='flex flex-wrap p-4 h-[500px] overflow-y-auto'>
-                  <div className='w-full lg:w-full px-4'>
+                  <div className='w-full lg:w-1/2 px-4'>
                     <div className='relative w-full mb-3'>
                       <label
                         className='block uppercase text-slate-500 text-xs font-bold mb-2'
@@ -179,10 +190,55 @@ export default function Modal({
                         placeholder='Title'
                         className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                         defaultValue={itemSelected?.title}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                       />
                       <small className='text-red-500 font-medium'>
                         {messages.map((message) =>
                           message.key === 'title' ? message.message : null
+                        )}
+                      </small>
+                    </div>
+                  </div>
+                  <div className='w-full lg:w-1/2 px-4'>
+                    <div className='relative w-full mb-3'>
+                      <label
+                        className='block uppercase text-slate-500 text-xs font-bold mb-2'
+                        htmlFor='grid-password'
+                      >
+                        Path
+                      </label>
+                      <input
+                        ref={pathRef}
+                        type='text'
+                        placeholder='Example: name-service'
+                        className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                        value={convertToPath(title)}
+                        disabled
+                      />
+                      <small className='text-red-500 font-medium'>
+                        {messages.map((message) =>
+                          message.key === 'path' ? message.message : null
+                        )}
+                      </small>
+                    </div>
+                  </div>
+                  <div className='w-full lg:w-full px-4'>
+                    <div className='relative w-full mb-3'>
+                      <label
+                        className='block uppercase text-slate-500 text-xs font-bold mb-2'
+                        htmlFor='grid-password'
+                      >
+                        Summary
+                      </label>
+                      <textarea
+                        ref={summaryRef}
+                        placeholder='Summary'
+                        className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
+                      ></textarea>
+                      <small className='text-red-500 font-medium'>
+                        {messages.map((message) =>
+                          message.key === 'summary' ? message.message : null
                         )}
                       </small>
                     </div>
@@ -253,7 +309,7 @@ export default function Modal({
                           onImageUpload={onImageUpload}
                           onChange={(content) => setContent(content)}
                           defaultValue={content}
-                          setDefaultStyle={'height: 500px; font-size: 16px'}
+                          setDefaultStyle={'height: 250px; font-size: 16px'}
                           setOptions={{
                             buttonList: [
                               [
