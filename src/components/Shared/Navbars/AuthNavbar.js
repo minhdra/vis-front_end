@@ -17,7 +17,7 @@ export default function Navbar(props) {
               className="text-white text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase"
               to="/"
             >
-              Notus React
+              <img className='w-[150px]' src={require('../../../assets/img/logo/vninspection-high-resolution-logo-color-on-transparent-background.png')} alt='' />
             </Link>
             <button
               className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none -mr-3"
@@ -82,14 +82,14 @@ export default function Navbar(props) {
                 </a>
               </li> */}
 
-              <li className="flex items-center">
+              {/* <li className="flex items-center">
                 <button
                   className="bg-white text-slate-500 active:bg-slate-50 font-bold uppercase px-4 py-2 mt-3 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150 text-lg"
                   type="button"
                 >
                   🐉
                 </button>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
