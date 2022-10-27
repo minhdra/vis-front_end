@@ -1,4 +1,4 @@
-import instance from './axios';
+import {instance} from './axios';
 
 export const search = async (data) => (await instance.post('/auth/search', {
   ...data
