@@ -1,4 +1,4 @@
-import Formidable from "Formidable";
+import Formidable from "formidable";
 const fs = require("fs");
 
 export const config = {
