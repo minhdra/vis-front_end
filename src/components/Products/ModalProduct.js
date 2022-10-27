@@ -57,8 +57,7 @@ export default function Modal({
       formData.append('file', file);
 
       await uploadSingle(formData)
-        .then((res) => res.data.filename)
-        .then((data) => path = process.env.REACT_APP_API_URL + 'images/' + data)
+        .then((res) => (path = res.data.path))
         .catch((err) => alert('Upload error!!!'));
     }
 
@@ -78,7 +77,10 @@ export default function Modal({
 
     if (!itemSelected) data.createId = uuid;
     else data.createdId = itemSelected.createdId[0]._id;
-    if (selectedFileThumbnail) await handleUploadImage(selectedFileThumbnail).then(res => data.thumbnail = res);
+    if (selectedFileThumbnail)
+      await handleUploadImage(selectedFileThumbnail).then(
+        (res) => (data.thumbnail = res)
+      );
 
     const validator = modalProductValidator(data);
 
@@ -90,12 +92,11 @@ export default function Modal({
       );
 
       setMessages(arr);
-    } else
-    {
+    } else {
       setShowModal(false);
       handlePost(data, itemSelected ? 1 : 0);
       toggleToast(true);
-      selectedFileThumbnail=null;
+      selectedFileThumbnail = null;
     }
   };
 
@@ -260,9 +261,7 @@ export default function Modal({
                       <div className='relative'>
                         <img
                           alt='...'
-                          src={
-                            thumbnailURL
-                          }
+                          src={thumbnailURL}
                           className='shadow-xl rounded-md h-auto align-middle max-w-150-px border-2 border-red-500'
                         />
                       </div>
@@ -285,7 +284,7 @@ export default function Modal({
                         placeholder='Content of page'
                         rows={10}
                       ></textarea> */}
-                      {(content!==undefined || content) && (
+                      {(content !== undefined || content) && (
                         <SunEditor
                           autoFocus={false}
                           onImageUploadBefore={onImageUploadBefore}

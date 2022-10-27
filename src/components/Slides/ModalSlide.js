@@ -48,8 +48,7 @@ export default function Modal({
       formData.append('file', file);
 
       await uploadSingle(formData)
-        .then((res) => res.data.filename)
-        .then((data) => path = process.env.REACT_APP_API_URL + 'images/' + data)
+        .then((res) => path = res.data.path)
         .catch((err) => alert('Upload error!!!'));
     }
 
