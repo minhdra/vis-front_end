@@ -1,4 +1,4 @@
-import instance from './axios';
+import instance from './axiosImage';
 
 export const uploadSingle = async (data) => (await instance({
   url: '/image/upload',
