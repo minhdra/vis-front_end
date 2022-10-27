@@ -82,6 +82,7 @@ export default function Modal({
       setShowModal(false);
       handlePost(data, itemSelected ? 1 : 0);
       toggleToast(true);
+      selectedFileThumbnail=null;
     }
   };
 
