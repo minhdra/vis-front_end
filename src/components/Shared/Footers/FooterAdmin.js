@@ -11,10 +11,10 @@ export default function FooterAdmin() {
               <div className="text-sm text-slate-400 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://github.com/minhdra"
+                  href="https://vninspect.com"
                   className="text-slate-400 hover:text-slate-500 text-sm font-semibold py-1"
                 >
-                  Le Minh
+                  VN INSPECTION TEAM
                 </a>
               </div>
             </div>

@@ -17,10 +17,10 @@ export default function FooterSmall(props) {
               <div className="text-sm text-slate-400 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://github.com/minhdra"
+                  href="https://vninspect.com"
                   className="text-white hover:text-slate-200 text-sm font-semibold py-1"
                 >
-                  Le Minh
+                  VN INSPECTION TEAM
                 </a>
               </div>
             </div>
