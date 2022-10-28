@@ -14,7 +14,7 @@ export function loginValidator(data) {
 export function registerValidator(data) {
   const rule = joi.object({
     username: joi.string().min(1).max(24).required(),
-    email: joi.string().min(1).max(255).email().required(),
+    email: joi.string().min(1).max(255).email({ tlds: { allow: false } }).required(),
     password: joi.string().pattern(new RegExp('^[a-zA-Z0-9]{6,20}$')).required(),
   }).messages({
     'string.empty': `Your {#label} is required`,
