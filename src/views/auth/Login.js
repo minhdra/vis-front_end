@@ -38,7 +38,8 @@ export default function Login({ setTitle }) {
       } else {
         login(user)
           .then((res) => {
-            const data = res.data.data._id
+            const data = res.data.data._id;
+            window.sessionStorage.setItem('USER_TOKEN', res.data.token);
             setData(data);
             setAlert({
               message: res.data.message,
@@ -61,7 +62,7 @@ export default function Login({ setTitle }) {
   };
 
   useEffect(() => {
-    if(data)
+    if (data)
       window.sessionStorage.setItem('uuid', data);
   }, [data]);
 

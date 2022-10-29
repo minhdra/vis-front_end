@@ -190,7 +190,6 @@ export default function Modal({
                         type='text'
                         placeholder='Title'
                         className='border-0 px-3 py-3 placeholder-slate-200 text-slate-500 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                        defaultValue={itemSelected?.title}
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                       />
