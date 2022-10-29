@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import MainUser from '../../components/Users/MainUser';
 import { register, remove, search, update } from '../../services/auth';
 
-const token = window.sessionStorage.getItem('USER_TOKEN');
 
 export default function Users({ setTitle }) {
+  const token = window.sessionStorage.getItem('USER_TOKEN');
   useEffect(() => { setTitle('VIS - Users'); }, [setTitle]);
 
   const [optionSearch, setOptionSearch] = useState({
@@ -23,7 +23,7 @@ export default function Users({ setTitle }) {
   }
 
   useEffect(() => {
-    searchData(optionSearch)
+    searchData(optionSearch);
   }, [optionSearch]);
 
   const handlePost = (option, action) => {

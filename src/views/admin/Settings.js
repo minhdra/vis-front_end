@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 import CardSettings from '../../components/Cards/CardSettings.js';
 import { getById, update } from '../../services/auth.js';
-const token = window.sessionStorage.getItem('USER_TOKEN');
 export default function Settings({ setTitle }) {
+  const token = window.sessionStorage.getItem('USER_TOKEN');
   useEffect(() => {
     setTitle('VIS - Profile');
   }, [setTitle]);

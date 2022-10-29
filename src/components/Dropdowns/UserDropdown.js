@@ -3,8 +3,8 @@ import { createPopper } from "@popperjs/core";
 import { useNavigate } from 'react-router';
 import { getById } from '../../services/auth';
 import { Link } from 'react-router-dom';
-const token = window.sessionStorage.getItem('USER_TOKEN');
 const UserDropdown = () => {
+  const token = window.sessionStorage.getItem('USER_TOKEN');
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -46,7 +46,7 @@ const UserDropdown = () => {
     {
       navigate("../auth/login");
     }
-  }, [userId, navigate, window.sessionStorage.getItem('uuid')]);
+  }, [userId, navigate, window.sessionStorage.getItem('uuid'), token]);
 
   return (
     <>
