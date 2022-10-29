@@ -3,7 +3,7 @@ import { createPopper } from "@popperjs/core";
 import { useNavigate } from 'react-router';
 import { getById } from '../../services/auth';
 import { Link } from 'react-router-dom';
-
+const token = window.sessionStorage.getItem('USER_TOKEN');
 const UserDropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
@@ -40,7 +40,7 @@ const UserDropdown = () => {
     if (userId && window.sessionStorage.getItem('uuid'))
     {
       let _id = userId;
-      getById(_id).then((res) => setUser(res)).catch((err) => console.log(err));
+      getById(_id, token).then((res) => setUser(res)).catch((err) => console.log(err));
     }
     else
     {

@@ -1,8 +1,6 @@
 import instance from './axios';
 
-const token = window.sessionStorage.getItem('USER_TOKEN');
-
-export const search = async (data) =>
+export const search = async (data, token) =>
   (
     await instance.post(
       '/auth/search',
@@ -17,7 +15,7 @@ export const search = async (data) =>
     )
   ).data;
 
-export const getById = async (id) =>
+export const getById = async (id, token) =>
   (
     await instance.get('/auth/' + id, {
       headers: {
@@ -36,7 +34,7 @@ export const login = async (data) =>
     ...data,
   });
 
-export const changePassword = async (data) =>
+export const changePassword = async (data, token) =>
   await instance.post(
     '/auth/change-password',
     {
@@ -49,7 +47,7 @@ export const changePassword = async (data) =>
     }
   );
 
-export const remove = async (data) =>
+export const remove = async (data, token) =>
   await instance.post(
     '/auth/delete',
     {
@@ -62,7 +60,7 @@ export const remove = async (data) =>
     }
   );
 
-export const update = async (data) =>
+export const update = async (data, token) =>
   await instance.post(
     '/auth/update',
     {

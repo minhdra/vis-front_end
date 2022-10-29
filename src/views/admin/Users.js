@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import MainUser from '../../components/Users/MainUser';
 import { register, remove, search, update } from '../../services/auth';
 
+const token = window.sessionStorage.getItem('USER_TOKEN');
+
 export default function Users({ setTitle }) {
   useEffect(() => { setTitle('VIS - Users'); }, [setTitle]);
 
@@ -15,13 +17,14 @@ export default function Users({ setTitle }) {
   const [error, setError] = useState();
 
   // Get data
+  
+  const searchData = (option) => {
+    search(option, token).then((res) => setData(res)).catch((err) => console.log(err.message));
+  }
+
   useEffect(() => {
     searchData(optionSearch)
   }, [optionSearch]);
-
-  const searchData = (option) => {
-    search(option).then((res) => setData(res)).catch((err) => console.log(err.message));
-  }
 
   const handlePost = (option, action) => {
     if (option)
@@ -31,10 +34,10 @@ export default function Users({ setTitle }) {
           register(option).then(res => searchData(optionSearch)).catch(err => setError(err));
           break;
         case 1:
-          update(option).then(res => searchData(optionSearch));
+          update(option, token).then(res => searchData(optionSearch));
           break;
         case 2:
-          remove(option).then(res => searchData(optionSearch));
+          remove(option, token).then(res => searchData(optionSearch));
           break;
         default:
           break;

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import CardSettings from '../../components/Cards/CardSettings.js';
 import { getById, update } from '../../services/auth.js';
-
+const token = window.sessionStorage.getItem('USER_TOKEN');
 export default function Settings({ setTitle }) {
   useEffect(() => {
     setTitle('VIS - Profile');
@@ -21,13 +21,13 @@ export default function Settings({ setTitle }) {
   }, [userId]);
 
   const getUser = (id) => {
-    getById(id)
+    getById(id, token)
       .then((res) => setUser(res))
       .catch((err) => console.log(err.message));
   };
 
   const updateUser = (option) => {
-    update(option).then((res) => getUser(userId));
+    update(option, token).then((res) => getUser(userId));
   };
 
   return (
