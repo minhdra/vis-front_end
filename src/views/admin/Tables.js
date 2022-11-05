@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import CardTable from "../../components/Cards/CardTable.js";
 
 export default function Tables({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Tables'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Tables'); }, [setTitle]);
 
   return (
     <>

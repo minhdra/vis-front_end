@@ -7,7 +7,7 @@ import { getById, update } from '../../services/auth.js';
 export default function Settings({ setTitle }) {
   const token = window.sessionStorage.getItem('USER_TOKEN');
   useEffect(() => {
-    setTitle('VIS - Profile');
+    setTitle('VNI - Profile');
   }, [setTitle]);
 
   const [userId, setUserId] = useState(() =>

@@ -5,7 +5,7 @@ import { register, remove, search, update } from '../../services/auth';
 
 export default function Users({ setTitle }) {
   const token = window.sessionStorage.getItem('USER_TOKEN');
-  useEffect(() => { setTitle('VIS - Users'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Users'); }, [setTitle]);
 
   const [optionSearch, setOptionSearch] = useState({
     firstName: '',

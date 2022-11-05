@@ -5,7 +5,7 @@ import { login } from '../../services/auth';
 import { loginValidator } from '../../utils/validation';
 
 export default function Login({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Login Admin'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Login Admin'); }, [setTitle]);
 
   const navigate = useNavigate();
 

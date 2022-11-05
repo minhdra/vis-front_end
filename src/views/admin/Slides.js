@@ -3,7 +3,7 @@ import MainSlide from '../../components/Slides/MainSlide';
 import { create, remove, search, update } from '../../services/slide';
 
 export default function Slides({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Slides'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Slides'); }, [setTitle]);
 
   const [optionSearch, setOptionSearch] = useState({
     title: '',

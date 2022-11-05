@@ -7,7 +7,7 @@ import Navbar from "../components/Shared/Navbars/AuthNavbar.js";
 import Footer from "../components/Shared/Footers/Footer.js";
 
 export default function Landing({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Landing Pages'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Landing Pages'); }, [setTitle]);
 
   return (
     <>

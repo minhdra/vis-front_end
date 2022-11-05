@@ -3,7 +3,7 @@ import MainService from '../../components/Services/MainService';
 import { create, remove, search, update } from '../../services/service';
 
 export default function Services({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Services'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Services'); }, [setTitle]);
 
   const [optionSearch, setOptionSearch] = useState({
     title: '',

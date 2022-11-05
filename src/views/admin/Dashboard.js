@@ -9,7 +9,7 @@ import React, { useEffect } from "react";
 import HeaderStats from '../../components/Shared/Headers/HeaderStats';
 
 export default function Dashboard({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Dashboard'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Dashboard'); }, [setTitle]);
 
   return (
     <div className='w-full mx-auto min-h-screen-75'>

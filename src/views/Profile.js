@@ -4,7 +4,7 @@ import Navbar from "../components/Shared/Navbars/AuthNavbar.js";
 import Footer from "../components/Shared/Footers/Footer.js";
 
 export default function Profile({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Auth'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Auth'); }, [setTitle]);
 
   return (
     <>

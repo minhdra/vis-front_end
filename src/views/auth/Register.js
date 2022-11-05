@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 export default function Register({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Register Admin'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Register Admin'); }, [setTitle]);
 
   return (
     <>

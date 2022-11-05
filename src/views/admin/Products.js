@@ -3,7 +3,7 @@ import MainProduct from '../../components/Products/MainProduct';
 import { create, remove, search, update } from '../../services/product';
 
 export default function Products({ setTitle }) {
-  useEffect(() => { setTitle('VIS - Products'); }, [setTitle]);
+  useEffect(() => { setTitle('VNI - Products'); }, [setTitle]);
 
   const [optionSearch, setOptionSearch] = useState({
     name: '',
